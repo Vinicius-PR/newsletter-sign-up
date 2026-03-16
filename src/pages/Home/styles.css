@@ -1,9 +1,4 @@
-.home {
-  /* width: 58rem; */
-  /* height: 40rem; */
-  /* max-height: 100vh; */
-  /* max-width: 100vw; */
-  
+.home { 
   display: flex;
   justify-content: center;
   align-items: center;
