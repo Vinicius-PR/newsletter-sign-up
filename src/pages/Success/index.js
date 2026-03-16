@@ -7,9 +7,9 @@ export default function Success({ email, onSetEmail }) {
   let navigate = useNavigate();
   return (
     <main className='success'>
-      <div className="content">
+      <div className="success__content">
 
-        <div className="content-text">
+        <div className="success__content__text">
           <img src={iconSuccess} alt="Success" />
           <h1>Thanks for subscribing!</h1>
           <p className="confirmation-message">

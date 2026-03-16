@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import illustrationImg from '../../assets/images/illustration-sign-up-desktop.svg';
 import illustrationImgMobile from '../../assets/images/illustration-sign-up-mobile.svg';
 import iconList from '../../assets/images/icon-list.svg';
@@ -9,19 +9,6 @@ import './styles.css';
 export default function Home({ email, onSetEmail }) {
   let navigate = useNavigate();
   const [invalid, setInvalid] = useState(false)
-  const [width, setWidth] = useState(0)
-
-  useEffect(() => {
-    function handleResize() {
-      setWidth(window.innerWidth)
-    }
-    window.addEventListener('resize', handleResize)
-    handleResize()
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [setWidth])
 
   function validateEmail(email) {
     const regex = new RegExp("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")
@@ -36,13 +23,13 @@ export default function Home({ email, onSetEmail }) {
 
   return (
     <main className='home'>
-      <div className="content-bloc">
-        <h1>Stay updated!</h1>
-        <p>Join 60,000+ product managers receiving monthly updates on:</p>
+      <div className="home__content">
+        <h1 className='home__content__title'>Stay updated!</h1>
+        <p className='home__content__text'>Join 60,000+ product managers receiving monthly updates on:</p>
         <ul>
           <li><img src={iconList} alt='Icon' /> Product discovery and building what matters</li>
-          <li><img src={iconList} alt='Icon' /> mesuaring to ensure updates are a success</li>
-          <li><img src={iconList} alt='Icon' /> and much more!</li>
+          <li><img src={iconList} alt='Icon' /> Measuring to ensure updates are a success</li>
+          <li><img src={iconList} alt='Icon' /> And much more!</li>
         </ul>
 
         <form
@@ -55,12 +42,6 @@ export default function Home({ email, onSetEmail }) {
             }
           }}
         >
-          <span
-            id="erro-message-email"
-            className={invalid ? 'invalid' : ''}
-          >
-            Valid email required
-          </span>
           <label htmlFor="email">Email address</label>
           <input
             className={invalid ? 'invalid' : ''}
@@ -75,12 +56,23 @@ export default function Home({ email, onSetEmail }) {
               setInvalid(false)
             }}
           />
-          <button type="submit">Subscribe to montlhy newsletter</button>
+          <span
+            id="erro-message-email"
+            className={invalid ? 'invalid' : ''}
+          >
+            Valid email required
+          </span>
+
+          <button type="submit">Subscribe to monthly newsletter</button>
+
         </form>
       </div>
 
-      <div className="img-bloc">
-        <img src={width > 768 ? illustrationImg : illustrationImgMobile} alt="illustration" />
+      <div className="img-container">
+        <picture>
+          <source media="(min-width: 48em)" srcSet={illustrationImg} />
+          <img src={illustrationImgMobile} alt="illustration" />
+        </picture>
       </div>
     </main>
   )

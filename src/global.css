@@ -42,12 +42,13 @@ button:hover {
 }
 
 h1 {
-  font-size: 3.5rem;
+  font-size: 3.5rem; /* 56px */
   font-weight: bold;
   color: var(--darkSlateGrey);
+  line-height: 1;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48em) {
   h1 {
     font-size: 2.5rem;
   }
