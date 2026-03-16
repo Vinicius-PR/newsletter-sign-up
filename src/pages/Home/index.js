@@ -49,6 +49,8 @@ export default function Home({ email, onSetEmail }) {
             name="email"
             id="email"
             required
+            aria-describedby="error-message-email"
+            aria-invalid={!invalid}
             placeholder="email@company.com"
             value={email}
             onChange={(e) => {
@@ -57,7 +59,9 @@ export default function Home({ email, onSetEmail }) {
             }}
           />
           <span
-            id="erro-message-email"
+            id="error-message-email"
+            role="alert"
+            aria-live="assertive"
             className={invalid ? 'invalid' : ''}
           >
             Valid email required
